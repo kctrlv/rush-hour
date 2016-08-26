@@ -16,6 +16,11 @@ Capybara.app = RushHour::Server
 DatabaseCleaner.strategy = :truncation
 
 module TestHelpers
+  include Rack::Test::Methods
+  def app     # def app is something that Rack::Test is looking for
+    RushHour::Server
+  end
+
   def setup
     @params_client1 = {
       identifier: "jumpstartlab",
@@ -57,8 +62,6 @@ module TestHelpers
                 "resolutionWidth":"1920",
                 "resolutionHeight":"1280",
                 "ip":"23.20.40.211"},
-      identifier: "google",
-      rootUrl: "http://google.com"
     }
 
     DatabaseCleaner.clean

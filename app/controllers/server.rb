@@ -17,7 +17,6 @@ module RushHour
         status 400
         body "400 Bad Request"
       end
-
     end
 
     def valid_request?(params)
@@ -27,6 +26,10 @@ module RushHour
     def repeat_request?(params)
       !Client.find_by( identifier: params[:identifier] ).nil? &&
       !Client.find_by( root_url: params[:rootUrl] ).nil?
+    end
+
+    post '/sources/:identifier/data' do
+
     end
   end
 

@@ -5,8 +5,8 @@ class TableIntegrationTest < Minitest::Test
   include TestHelpers
 
   def test_it_creates_all_tables_with_valid_information
-    DataParser.create(@params_client1)
-    DataParser.create(@params_pay1)
+    ClientParser.create(@params_client1)
+    PayloadParser.create(@params_pay1)
 
     assert_equal 1, PayloadRequest.all.length
     assert_equal 1, RequestType.all.length
@@ -18,32 +18,32 @@ class TableIntegrationTest < Minitest::Test
   end
 
   def test_it_creates_request_type_relationships
-    DataParser.create(@params_client1)
-    DataParser.create(@params_pay1)
+    ClientParser.create(@params_client1)
+    PayloadParser.create(@params_pay1)
     pr = PayloadRequest.all.first
 
     assert_equal "GET", pr.request_type.name
   end
 
   def test_it_creates_target_url_relationships
-    DataParser.create(@params_client1)
-    DataParser.create(@params_pay1)
+    ClientParser.create(@params_client1)
+    PayloadParser.create(@params_pay1)
     pr = PayloadRequest.all.first
 
     assert_equal "http://jumpstartlab.com/", pr.target_url.name
   end
 
   def test_it_creates_referrer_url_relationships
-    DataParser.create(@params_client1)
-    DataParser.create(@params_pay1)
+    ClientParser.create(@params_client1)
+    PayloadParser.create(@params_pay1)
     pr = PayloadRequest.all.first
 
     assert_equal "http://jumpstartlab.com", pr.referrer_url.name
   end
 
   def test_it_creates_resolution_relationships
-    DataParser.create(@params_client1)
-    DataParser.create(@params_pay1)
+    ClientParser.create(@params_client1)
+    PayloadParser.create(@params_pay1)
     pr = PayloadRequest.all.first
 
     assert_equal "1920", pr.resolution.width
@@ -51,8 +51,8 @@ class TableIntegrationTest < Minitest::Test
   end
 
   def test_it_links_user_agent_correctly
-    DataParser.create(@params_client1)
-    DataParser.create(@params_pay1)
+    ClientParser.create(@params_client1)
+    PayloadParser.create(@params_pay1)
     pr = PayloadRequest.all.first
 
     assert_equal "Chrome",    pr.u_agent.browser
@@ -60,20 +60,20 @@ class TableIntegrationTest < Minitest::Test
   end
 
   def test_it_links_ip_correctly
-    DataParser.create(@params_client1)
-    DataParser.create(@params_pay1)
+    ClientParser.create(@params_client1)
+    PayloadParser.create(@params_pay1)
     pr = PayloadRequest.all.first
 
     assert_equal "63.29.38.211", pr.ip.address
   end
 
   def test_request_type_assigns_ids_accordingly
-    DataParser.create(@params_client1)
-    DataParser.create(@params_pay1)
-    DataParser.create(@params_client2)
-    DataParser.create(@params_pay2)
-    DataParser.create(@params_client2)
-    DataParser.create(@params_pay3)
+    ClientParser.create(@params_client1)
+    PayloadParser.create(@params_pay1)
+    ClientParser.create(@params_client2)
+    PayloadParser.create(@params_pay2)
+    ClientParser.create(@params_client2)
+    PayloadParser.create(@params_pay3)
     pr = PayloadRequest.find_by(responded_in: 37)
     pr2 = PayloadRequest.find_by(responded_in: 41)
     pr3 = PayloadRequest.find_by(responded_in: 40)
@@ -84,12 +84,12 @@ class TableIntegrationTest < Minitest::Test
   end
 
   def test_target_url_assigns_ids_accordingly
-    DataParser.create(@params_client1)
-    DataParser.create(@params_pay1)
-    DataParser.create(@params_client2)
-    DataParser.create(@params_pay2)
-    DataParser.create(@params_client2)
-    DataParser.create(@params_pay3)
+    ClientParser.create(@params_client1)
+    PayloadParser.create(@params_pay1)
+    ClientParser.create(@params_client2)
+    PayloadParser.create(@params_pay2)
+    ClientParser.create(@params_client2)
+    PayloadParser.create(@params_pay3)
     pr = PayloadRequest.find_by(responded_in: 37)
     pr2 = PayloadRequest.find_by(responded_in: 41)
     pr3 = PayloadRequest.find_by(responded_in: 40)
@@ -100,12 +100,12 @@ class TableIntegrationTest < Minitest::Test
   end
 
   def test_referrer_url_assigns_ids_accordingly
-    DataParser.create(@params_client1)
-    DataParser.create(@params_pay1)
-    DataParser.create(@params_client2)
-    DataParser.create(@params_pay2)
-    DataParser.create(@params_client2)
-    DataParser.create(@params_pay3)
+    ClientParser.create(@params_client1)
+    PayloadParser.create(@params_pay1)
+    ClientParser.create(@params_client2)
+    PayloadParser.create(@params_pay2)
+    ClientParser.create(@params_client2)
+    PayloadParser.create(@params_pay3)
     pr = PayloadRequest.find_by(responded_in: 37)
     pr2 = PayloadRequest.find_by(responded_in: 41)
     pr3 = PayloadRequest.find_by(responded_in: 40)
@@ -116,12 +116,12 @@ class TableIntegrationTest < Minitest::Test
   end
 
   def test_resolution_assigns_ids_accordingly
-    DataParser.create(@params_client1)
-    DataParser.create(@params_pay1)
-    DataParser.create(@params_client2)
-    DataParser.create(@params_pay2)
-    DataParser.create(@params_client2)
-    DataParser.create(@params_pay3)
+    ClientParser.create(@params_client1)
+    PayloadParser.create(@params_pay1)
+    ClientParser.create(@params_client2)
+    PayloadParser.create(@params_pay2)
+    ClientParser.create(@params_client2)
+    PayloadParser.create(@params_pay3)
     pr = PayloadRequest.find_by(responded_in: 37)
     pr2 = PayloadRequest.find_by(responded_in: 41)
     pr3 = PayloadRequest.find_by(responded_in: 40)
@@ -132,12 +132,12 @@ class TableIntegrationTest < Minitest::Test
   end
 
   def test_u_agent_assigns_ids_accordingly
-    DataParser.create(@params_client1)
-    DataParser.create(@params_pay1)
-    DataParser.create(@params_client2)
-    DataParser.create(@params_pay2)
-    DataParser.create(@params_client2)
-    DataParser.create(@params_pay3)
+    ClientParser.create(@params_client1)
+    PayloadParser.create(@params_pay1)
+    ClientParser.create(@params_client2)
+    PayloadParser.create(@params_pay2)
+    ClientParser.create(@params_client2)
+    PayloadParser.create(@params_pay3)
     pr = PayloadRequest.find_by(responded_in: 37)
     pr2 = PayloadRequest.find_by(responded_in: 41)
     pr3 = PayloadRequest.find_by(responded_in: 40)
@@ -148,12 +148,12 @@ class TableIntegrationTest < Minitest::Test
   end
 
   def test_ip_assigns_ids_accordingly
-    DataParser.create(@params_client1)
-    DataParser.create(@params_pay1)
-    DataParser.create(@params_client2)
-    DataParser.create(@params_pay2)
-    DataParser.create(@params_client2)
-    DataParser.create(@params_pay3)
+    ClientParser.create(@params_client1)
+    PayloadParser.create(@params_pay1)
+    ClientParser.create(@params_client2)
+    PayloadParser.create(@params_pay2)
+    ClientParser.create(@params_client2)
+    PayloadParser.create(@params_pay3)
     pr = PayloadRequest.find_by(responded_in: 37)
     pr2 = PayloadRequest.find_by(responded_in: 41)
     pr3 = PayloadRequest.find_by(responded_in: 40)

@@ -17,7 +17,7 @@ class TargetUrl < ActiveRecord::Base
   end
 
   def self.average_response_time(url)
-    find_by(name: url).payload_requests.average(:responded_in).round(2)
+    find_by(name: url).payload_requests.average(:responded_in).to_f.round(2)
   end
 
   def self.associated_http_verbs(url)

@@ -53,8 +53,8 @@ class ResolutionTest < Minitest::Test
 
   def test_resolutions_for_all
     make_payloads
-    assert_equal 2, Resolution.resolutions_for_all.count
+    assert_equal 3, Resolution.resolutions_for_all.count
     assert_equal 1, Resolution.resolutions_for_all['640x480']
-    assert_equal 2, Resolution.resolutions_for_all['1920x1280']
+    assert_equal 4, Resolution.resolutions_for_all['1920x1280']
   end
 end

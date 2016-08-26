@@ -6,7 +6,11 @@ module RushHour
     end
 
     post '/sources' do
-      
+
+    end
+
+    post '/sources/:identifier/data' do
+
     end
   end
 

@@ -1,4 +1,5 @@
 class PayloadRequest < ActiveRecord::Base
+  belongs_to :client
   belongs_to :request_type
   belongs_to :target_url
   belongs_to :referrer_url

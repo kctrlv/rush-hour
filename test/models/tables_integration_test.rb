@@ -10,7 +10,7 @@ class TableIntegrationTest < Minitest::Test
     assert_equal 6, PayloadRequest.all.length
     assert_equal 2, RequestType.all.length
     assert_equal 4, TargetUrl.all.length
-    assert_equal 5, ReferrerUrl.all.length
+    assert_equal 3, ReferrerUrl.all.length
     assert_equal 3, Resolution.all.length
     assert_equal 2, UAgent.all.length
     assert_equal 6, Ip.all.length
@@ -34,7 +34,7 @@ class TableIntegrationTest < Minitest::Test
     make_payloads
     pr = PayloadRequest.all.first
 
-    assert_equal "http://jumpstartlab.com", pr.referrer_url.name
+    assert_equal "http://google.com", pr.referrer_url.name
   end
 
   def test_it_creates_resolution_relationships
@@ -87,10 +87,11 @@ class TableIntegrationTest < Minitest::Test
     pr = PayloadRequest.find_by(responded_in: 37)
     pr2 = PayloadRequest.find_by(responded_in: 41)
     pr3 = PayloadRequest.find_by(responded_in: 40)
+    pr6 = PayloadRequest.find_by(responded_in: 60)
 
-    assert_equal false, pr.referrer_url.id == pr3.referrer_url.id
-    assert_equal true, pr3.referrer_url.id == pr2.referrer_url.id
-    assert_equal 5, ReferrerUrl.all.length
+    assert_equal true, pr.referrer_url.id == pr3.referrer_url.id
+    assert_equal false, pr2.referrer_url.id == pr6.referrer_url.id
+    assert_equal 3, ReferrerUrl.all.length
   end
 
   def test_resolution_assigns_ids_accordingly

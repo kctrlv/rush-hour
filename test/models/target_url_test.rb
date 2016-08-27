@@ -73,10 +73,7 @@ class TargetUrlTest < Minitest::Test
   def test_it_returns_three_most_popular_referrers
     make_payloads
     url = PayloadRequest.first.target_url.name
-
-    result = ["http://google.com",
-              "http://jumpstartlab.com",
-              "http://www.yahoo.com"]
+    result = ["http://google.com", "http://www.yahoo.com"]
     assert_equal result, TargetUrl.top_three_referrers(url)
   end
 

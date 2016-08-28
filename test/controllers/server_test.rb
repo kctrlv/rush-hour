@@ -156,8 +156,8 @@ class ServerTest < Minitest::Test
       rootUrl: "http://jumpstartlab.com"
     })
     get '/sources/jumpstartlab/data'
-    
-    assert_equal "No data has been received for this identifier", last_response.body
+
+    assert_equal 403, last_response.status
   end
 
 end

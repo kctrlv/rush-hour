@@ -1,4 +1,6 @@
 require 'pry'
+require 'tilt/erb'
+
 module RushHour
 
   class Server < Sinatra::Base
@@ -57,11 +59,13 @@ module RushHour
       redirect "/sources/#{params[:identifier]}/error" if @client.nil?
 
       if @client.payload_requests.length == 0
+        status 403
         body "No data has been received for this identifier"
       else
+        status 200
         body "Show Statistics"
       end
-      # erb :client_stats
+      erb :client_stats
     end
 
     get '/sources/:identifier/error' do

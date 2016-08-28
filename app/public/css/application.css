@@ -1,3 +1,10 @@
 body {
+  background-image: url("/photos/rushhourbg.jpg");
   background-color: #0f0f0f;
+}
+
+.dashboard-img {
+  max-width: 500px;
+  height: auto;
+  vertical-align: bottom;
 }

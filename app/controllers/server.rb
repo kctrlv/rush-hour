@@ -25,7 +25,7 @@ module RushHour
       end
 
       payload = CreatePayloadRequest.create(params)
-      
+
       if  CreatePayloadRequest.record_exists?(payload)
         status 403
         body "Identifier has already been taken"
@@ -42,6 +42,17 @@ module RushHour
       unless ClientCreator.client_exists?(params)
         status 403
         body "Client does not exist"
+      end
+    end
+
+    get '/sources/:identifier/data' do
+      client = Client.find_by identifier: params[:identifier]
+      if client.nil?
+        body "The identifier does not exist"
+      elsif client.payload_requests.length == 0
+        body "No data has been received for this identifier"
+      else
+        body "Show Statistics"
       end
     end
   end

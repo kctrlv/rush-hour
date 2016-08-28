@@ -83,7 +83,7 @@ module TestHelpers
       "url":"http://mysite.com/",
       "requestedAt":"2013-02-16 21:38:28 -0700",
       "respondedIn":32,
-      "referredBy":"http://www.google.com",
+      "referredBy":"http://google.com",
       "requestType":"GET",
       "userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1309.0 Safari/537.17",
       "resolutionWidth":"1920",
@@ -95,7 +95,7 @@ module TestHelpers
       "url":"http://jumpstartlab.com/blog",
       "requestedAt":"2013-02-16 21:38:28 -0700",
       "respondedIn":37,
-      "referredBy":"http://www.bing.com",
+      "referredBy":"http://bing.com",
       "requestType":"GET",
       "userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1309.0 Safari/537.17",
       "resolutionWidth":"1920",
@@ -107,7 +107,7 @@ module TestHelpers
       "url":"http://jumpstartlab.com/",
       "requestedAt":"2013-02-16 21:38:28 -0700",
       "respondedIn":60,
-      "referredBy":"http://www.yahoo.com",
+      "referredBy":"http://jumpstartlab.com",
       "requestType":"POST",
       "userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:48.0) Gecko/20100101 Firefox/48.0",
       "resolutionWidth":"640",
@@ -138,7 +138,7 @@ module TestHelpers
   end
 
   def create_payloads
-    CreatePayloadRequest.create_and_save({ payload: '{"url":"http://jumpstartlab.com/blog","requestedAt":"2013-02-16 21:38:28 -0700","respondedIn":37,"referredBy":"http://jumpstartlab.com","requestType":"GET","parameters":[],"eventName": "socialLogin","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1309.0 Safari/537.17","resolutionWidth":"1920","resolutionHeight":"1280","ip":"63.29.38.211"}', identifier: 'jumpstartlab' })
+    CreatePayloadRequest.create_and_save({ payload: '{"url":"http://jumpstartlab.com/apply","requestedAt":"2013-02-16 21:38:28 -0700","respondedIn":37,"referredBy":"http://jumpstartlab.com","requestType":"GET","parameters":[],"eventName": "socialLogin","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1309.0 Safari/537.17","resolutionWidth":"1920","resolutionHeight":"1280","ip":"63.29.38.211"}', identifier: 'jumpstartlab' })
     CreatePayloadRequest.create_and_save({ payload: '{"url":"http://jumpstartlab.com/blog","requestedAt":"2013-02-15 21:38:28 -0700","respondedIn":57,"referredBy":"http://jumpstartlab.com/apply","requestType":"GET","parameters":[],"eventName": "socialLogin","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/POST.17 (KHTML, like Gecko) Chrome/24.0.1309.0 Safari/537.17","resolutionWidth":"1920","resolutionHeight":"1280","ip":"63.29.38.211" }', identifier: 'jumpstartlab'})
     CreatePayloadRequest.create_and_save({ payload: '{"url":"http://jumpstartlab.com/blog","requestedAt":"2013-02-14 21:38:28 -0700","respondedIn":47,"referredBy":"http://jumpstartlab.com/apply","requestType":"GET","parameters":[],"eventName": "socialLogin","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1309.0 Safari/537.17","resolutionWidth":"1920","resolutionHeight":"1280","ip":"63.29.30.01" }', identifier: 'jumpstartlab'})
     CreatePayloadRequest.create_and_save({ payload: '{"url":"http://jumpstartlab.com/tutorials","requestedAt":"2013-02-17 20:38:43 -0700","respondedIn":47,"referredBy":"http://jumpstartlab.com/apply","requestType":"GET","parameters":[],"eventName": "socialLogin","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1309.0 Safari/537.17","resolutionWidth":"1920","resolutionHeight":"1280","ip":"63.29.30.01" }', identifier: 'jumpstartlab'})

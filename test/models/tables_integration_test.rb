@@ -10,7 +10,7 @@ class TableIntegrationTest < Minitest::Test
     assert_equal 6, PayloadRequest.all.length
     assert_equal 2, RequestType.all.length
     assert_equal 4, TargetUrl.all.length
-    assert_equal 5, ReferrerUrl.all.length
+    assert_equal 3, ReferrerUrl.all.length
     assert_equal 3, Resolution.all.length
     assert_equal 2, UAgent.all.length
     assert_equal 6, Ip.all.length
@@ -90,7 +90,7 @@ class TableIntegrationTest < Minitest::Test
 
     assert_equal false, pr.referrer_url.id == pr3.referrer_url.id
     assert_equal true, pr3.referrer_url.id == pr2.referrer_url.id
-    assert_equal 5, ReferrerUrl.all.length
+    assert_equal 3, ReferrerUrl.all.length
   end
 
   def test_resolution_assigns_ids_accordingly

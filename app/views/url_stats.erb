@@ -10,17 +10,17 @@
     Information on <%= @relativepath.name %>
   </h3>
     <h4>Max Response time</h4>
-      <%= TargetUrl.max_response_time(@relativepath.name) %>
+      <p><%= TargetUrl.max_response_time(@relativepath.name) %></p>
     <h4>Min Response time</h4>
-      <%= TargetUrl.min_response_time(@relativepath.name) %>
+      <p><%= TargetUrl.min_response_time(@relativepath.name) %></p>
     <h4>Sorted response times</h4>
-      <%= TargetUrl.sorted_response_times(@relativepath.name) %>
+      <p><%= TargetUrl.sorted_response_times(@relativepath.name) %></p>
     <h4>Average Response time for this URL</h4>
-      <%= TargetUrl.average_response_time(@relativepath.name) %>
+      <p><%= TargetUrl.average_response_time(@relativepath.name) %></p>
     <h4>HTTP Verb(s) associated used to it this URL</h4>
-
+      <p><%= TargetUrl.associated_http_verbs(@relativepath.name) %></p>
     <h4>Three most popular referrers</h4>
-
+      <p><%= TargetUrl.top_three_referrers(@relativepath.name) %></p>
     <h4>Three most popular user agents</h4>
-
+      <p><%= TargetUrl.top_three_user_agents(@relativepath.name) %></p>
 </center>

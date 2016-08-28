@@ -14,7 +14,8 @@ class PayloadParser
   end
 
   def self.parse_user_agent(data)
-    user_agent = UserAgent.parse(data[:userAgent])
+    user_agent_info = data[:userAgent].gsub("%3B", ";")
+    user_agent = UserAgent.parse(user_agent_info)
     { browser: user_agent.browser,
       os:      user_agent.os }
   end

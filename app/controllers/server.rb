@@ -6,7 +6,7 @@ module RushHour
     end
 
     post '/sources' do
-      client = Client.new(ClientParser.parse(params))
+      client = ClientCreator.create(params)
       if client.save
         status 200
         body "{\"identifier\":\"#{params[:identifier]}\"}"
@@ -19,16 +19,30 @@ module RushHour
       end
     end
 
-    # post '/sources/:identifier/data' do
-    #   data = PayloadParser.parse(params))
-    #   payload_data = CreatePayloadRequest.parse(data)
-    #   payload = PayloadRequest.new(payload_data)
-    #   if payload.save
-    #
-    #   else
-    #
-    #   end
-    # end
-  end
+    post '/sources/:identifier/data' do
+      unless ClientCreator.client_exists?(params)
+        redirect '/sources/:identifier/error'
+      end
 
+      payload = CreatePayloadRequest.create(params)
+      
+      if  CreatePayloadRequest.record_exists?(payload)
+        status 403
+        body "Identifier has already been taken"
+      elsif payload.save
+        status 200
+        body "{\"identifier\":\"#{params[:identifier]}\"}"
+      else
+        status 400
+        body "Parameters not complete"
+      end
+    end
+
+    get '/sources/:identifier/error' do
+      unless ClientCreator.client_exists?(params)
+        status 403
+        body "Client does not exist"
+      end
+    end
+  end
 end

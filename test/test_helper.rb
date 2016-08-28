@@ -45,7 +45,7 @@ module TestHelpers
     }
     params_pay1 = { payload: '{
       "url":"http://jumpstartlab.com/",
-      "requestedAt":"2013-02-16 21:38:28 -0700",
+      "requestedAt":"2013-02-16 21:38:20 -0700",
       "respondedIn":37,
       "referredBy":"http://jumpstartlab.com",
       "requestType":"GET",
@@ -57,7 +57,7 @@ module TestHelpers
     }
     params_pay2 = { payload: '{
       "url":"http://google.com",
-      "requestedAt":"2013-03-21 21:38:28 -0700",
+      "requestedAt":"2013-03-21 21:38:21 -0700",
       "respondedIn":41,
       "referredBy":"http://google.com",
       "requestType":"POST",
@@ -69,7 +69,7 @@ module TestHelpers
     }
     params_pay3 = { payload: '{
       "url":"http://jumpstartlab.com/",
-      "requestedAt":"2015-02-16 21:38:28 -0700",
+      "requestedAt":"2015-02-16 21:38:22 -0700",
       "respondedIn":40,
       "referredBy":"http://google.com",
       "requestType":"GET",
@@ -115,14 +115,23 @@ module TestHelpers
       "ip":"1.2.3.4" }',
       identifier: "jumpstartlab"
     }
-    ClientParser.create(params_client1)
-    ClientParser.create(params_client2)
-    ClientParser.create(params_client3)
-    PayloadParser.create(params_pay1)
-    PayloadParser.create(params_pay2)
-    PayloadParser.create(params_pay3)
-    PayloadParser.create(params_pay4)
-    PayloadParser.create(params_pay5)
-    PayloadParser.create(params_pay6)
+    c1 = ClientCreator.create(params_client1)
+    c1.save
+    c2 = ClientCreator.create(params_client2)
+    c2.save
+    c3 = ClientCreator.create(params_client3)
+    c3.save
+    pr1 = CreatePayloadRequest.create(params_pay1)
+    pr1.save
+    pr2 = CreatePayloadRequest.create(params_pay2)
+    pr2.save
+    pr3 = CreatePayloadRequest.create(params_pay3)
+    pr3.save
+    pr4 = CreatePayloadRequest.create(params_pay4)
+    pr4.save
+    pr5 = CreatePayloadRequest.create(params_pay5)
+    pr5.save
+    pr6 = CreatePayloadRequest.create(params_pay6)
+    pr6.save
   end
 end

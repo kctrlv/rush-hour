@@ -24,7 +24,7 @@ module RushHour
       end
     end
 
-    post '/sources/form' do
+    post '/new/form' do
       client = ClientCreator.create(params)
       if client.save
         redirect '/sources'
@@ -79,17 +79,17 @@ module RushHour
       erb :show
     end
 
-    get '/sources/new' do
+    get '/new/client' do
       @error = params[:error]
       erb :new
     end
 
-    get '/sources/login' do
+    get '/login/client' do
       @error = params[:error]
       erb :login
     end
 
-    post '/sources/login' do
+    post '/login/client' do
       redirect '/'
     end
 

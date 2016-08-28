@@ -3,12 +3,10 @@ module RushHour
 
   class Server < Sinatra::Base
     not_found do
-      @clients = Client.all
       erb :error
     end
 
     get '/' do
-      @clients = Client.all
       erb :dashboard
     end
 
@@ -23,6 +21,15 @@ module RushHour
       else
         status 400
         body client.errors.full_messages.join(", ")
+      end
+    end
+
+    post '/sources/form' do
+      client = ClientCreator.create(params)
+      if client.save
+        redirect '/sources'
+      else
+        redirect "/sources/new?error=#{client.errors.full_messages.join(", ")}"
       end
     end
 
@@ -46,8 +53,6 @@ module RushHour
     end
 
     get '/sources/:identifier/data' do
-      @clients = Client.all
-
       erb :show
     end
 
@@ -66,9 +71,13 @@ module RushHour
     end
 
     get '/sources/new' do
-      @clients = Client.all
-
+      @error = params[:error]
       erb :new
+    end
+
+    get '/sources/login' do
+
+      erb :login
     end
   end
 end

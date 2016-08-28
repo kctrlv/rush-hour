@@ -58,7 +58,7 @@ module RushHour
       @client = Client.find_by( identifier: params[:identifier] )
       redirect "/sources/#{params[:identifier]}/error" if @client.nil?
 
-      if @client.payload_requests.length == 0
+      if @client.payload_requests.count == 0
         status 403
         body "No data has been received for this identifier"
       else

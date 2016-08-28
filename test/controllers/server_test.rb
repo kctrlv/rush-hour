@@ -151,7 +151,6 @@ class ServerTest < Minitest::Test
   end
 
   def test_application_accurately_responds_to_identifier_with_no_payloads
-skip
     ClientCreator.create_and_save({
       identifier: "jumpstartlab",
       rootUrl: "http://jumpstartlab.com"

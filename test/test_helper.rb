@@ -218,3 +218,10 @@ module TestHelpers
     CreatePayloadRequest.create_and_save({ payload: '{"url":"http://yahoo.com/news","requestedAt":"2013-01-16 11:43:33 -0700","respondedIn":1233,"referredBy":"http://jumpstartlab.com","requestType":"POST","parameters":["slow"],"eventName": "beginRegistration","userAgent":"Mozilla/3.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1309.0 Safari/537.17","resolutionWidth":"800","resolutionHeight":"600","ip":"63.29.38.214" }', identifier: 'google'})
   end
 end
+
+Capybara.app = RushHour::Server
+
+class FeatureTest < Minitest::Test
+  include Capybara::DSL
+  include TestHelpers
+end

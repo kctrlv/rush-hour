@@ -1,5 +1,11 @@
 class TargetUrl < ActiveRecord::Base
   has_many :payload_requests
+  has_many :request_types, through: :payload_requests
+  has_many :target_urls,   through: :payload_requests
+  has_many :referrer_urls, through: :payload_requests
+  has_many :resolutions,   through: :payload_requests
+  has_many :u_agents,      through: :payload_requests
+  has_many :ips,           through: :payload_requests
 
   validates :name, presence: true
   validates :name, uniqueness: true

@@ -109,5 +109,17 @@ module RushHour
 
       erb :url
     end
+
+    get '/sources/:identifier/data' do
+      client = Client.find_by identifier: params[:identifier]
+      if client.nil?
+        body "The identifier does not exist"
+      elsif client.payload_requests.length == 0
+        body "No data has been received for this identifier"
+      else
+        body "Show Statistics"
+      end
+    end
+    
   end
 end

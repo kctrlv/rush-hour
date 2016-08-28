@@ -4,6 +4,11 @@ class CreatePayloadRequest
     parse(data)
   end
 
+  def self.create_and_save(params)
+    payload = create(params)
+    payload.save
+  end
+
   def self.parse(data)
     PayloadRequest.new({
       client_id:    Client.find_by( identifier: data[:client_identifier] ).id,

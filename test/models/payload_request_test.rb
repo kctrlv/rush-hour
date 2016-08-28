@@ -97,4 +97,10 @@ class PayloadRequestTest < Minitest::Test
     assert_equal 32, PayloadRequest.min_response_time
     assert_equal 6, PayloadRequest.all.count
   end
+
+  def test_payload_requests_are_created_with_payload_request_creator
+    create_clients
+    create_payloads
+    assert_equal 78, PayloadRequest.all.count
+  end
 end

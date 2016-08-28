@@ -9,6 +9,11 @@ class ClientCreator
     Client.new(parsed_data)
   end
 
+  def self.create_and_save(params)
+    client = create(params)
+    client.save
+  end
+
   def self.client_exists?(params)
     Client.find_by( identifier: params[:identifier] )
   end

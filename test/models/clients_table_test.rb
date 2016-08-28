@@ -30,4 +30,9 @@ class ClientTableTest < Minitest::Test
     refute client.valid?
   end
 
+  def test_clients_are_created_with_client_creator
+    create_clients
+    assert_equal 8, Client.all.length
+  end
+
 end

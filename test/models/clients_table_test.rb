@@ -103,11 +103,6 @@ class ClientTableTest < Minitest::Test
     client = Client.find(1)
     assert_equal "1920x1280", client.resolution_breakdown.keys[0]
     assert_equal 10, client.resolution_breakdown.values[0]
-
   end
-
-
-
-
 
 end

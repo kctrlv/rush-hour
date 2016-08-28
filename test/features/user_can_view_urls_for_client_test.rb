@@ -1,7 +1,7 @@
 require_relative '../test_helper'
 
-class UserCanViewAllClientsTest < FeatureTest
-  def test_user_can_view_all_clients
+class UserCanViewUrlsForClientTest < FeatureTest
+  def test_user_can_view_urls_for_client
     create_clients
     create_payloads
 

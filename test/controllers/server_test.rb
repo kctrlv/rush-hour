@@ -1,5 +1,5 @@
 require_relative '../test_helper'
-require 'pry'
+
 class ServerTest < Minitest::Test
   include TestHelpers
 

@@ -1,7 +1,7 @@
 <div class="row">
   <% @clients.each do |client| %>
     <div class="col-md-2">
-      <h3><a href="/sources/<%= client.identifier %>/data"><%= client.identifier.capitalize %></a></h3>
+      <h3><a href="/sources/<%= client.identifier %>"><%= client.identifier.capitalize %></a></h3>
       <ul>
         <li><a href="http://www.wikipedia.com/wiki/<%= client.identifier %>">Learn More</a></li>
         <li><a href="<%= client.root_url %>">Root Website</a></li>

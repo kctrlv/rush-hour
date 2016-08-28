@@ -53,7 +53,10 @@ module RushHour
     end
 
     get '/sources/:identifier/data' do
-      erb :show
+      @client = Client.find_by( identifier: params[:identifier] )
+      redirect "/sources/#{params[:identifier]}/error" if @client.nil?
+
+      erb :client_stats
     end
 
     get '/sources/:identifier/error' do
@@ -69,6 +72,13 @@ module RushHour
       erb :index
     end
 
+    get '/sources/:identifier' do
+      @client = Client.find_by( identifier: params[:identifier] )
+      redirect "/sources/#{params[:identifier]}/error" if @client.nil?
+
+      erb :show
+    end
+
     get '/sources/new' do
       @error = params[:error]
       erb :new
@@ -81,6 +91,23 @@ module RushHour
 
     post '/sources/login' do
       redirect '/'
+    end
+
+    get '/sources/:identifier/url/:relativepath' do
+      @client = Client.find_by( identifier: params[:identifier] )
+      redirect "/sources/#{params[:identifier]}/error" if @client.nil?
+      @relativepath = @client.target_urls.find_by( name: "#{@client.root_url}/#{params[:relativepath]}")
+      redirect "/sources/#{params[:identifier]}/error" if @relativepath.nil?
+
+      erb :url_stats
+    end
+
+    get '/sources/:identifier/url' do
+      @client = Client.find_by( identifier: params[:identifier] )
+      redirect "/sources/#{params[:identifier]}/error" if @client.nil?
+      @relativepaths = @client.target_urls.all.uniq
+
+      erb :url
     end
   end
 end

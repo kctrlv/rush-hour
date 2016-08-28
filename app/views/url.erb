@@ -1,0 +1,15 @@
+<center><h2><strong><%= @client.identifier.upcase %></strong></h2></center>
+<% if @relativepaths.empty? %>
+  <div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+    <%= @client.identifier.capitalize %> Does Not Have Any Information
+  </div>
+<% else %>
+  <ul>
+    <% @relativepaths.each do |relativepath| %>
+      <li><a href="/sources/<%= @client.identifier %>/url/<%= relativepath.name.gsub("#{@client.root_url}/", "") %>">
+        <%= relativepath.name.gsub("#{@client.root_url}/", "") %></a></li>
+    <% end %>
+  </ul>
+<% end %>

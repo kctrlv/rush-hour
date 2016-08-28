@@ -10,6 +10,6 @@ class UserCanViewClientStatisticsTest < FeatureTest
 
     assert page.has_content?("GOOGLE Data")
     assert page.has_content?("Average Response time across all requests")
-    assert page.has_content?("97.11")
+    assert page.has_content?("137.47")
   end
 end

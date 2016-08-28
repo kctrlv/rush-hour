@@ -35,7 +35,7 @@ module RushHour
 
     post '/sources/:identifier/data' do
       unless ClientCreator.client_exists?(params)
-        redirect '/sources/:identifier/error'
+        redirect "/sources/#{params[:identifier]}/error"
       end
 
       payload = CreatePayloadRequest.create(params)
@@ -60,7 +60,6 @@ module RushHour
       unless ClientCreator.client_exists?(params)
         status 403
         body "Client does not exist"
-        erb :error
       end
     end
 
@@ -76,8 +75,12 @@ module RushHour
     end
 
     get '/sources/login' do
-
+      @error = params[:error]
       erb :login
+    end
+
+    post '/sources/login' do
+      redirect '/'
     end
   end
 end

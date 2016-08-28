@@ -146,7 +146,8 @@ class ServerTest < Minitest::Test
 
   def test_application_accurately_responds_to_invalid_identifier
     get '/sources/nonexistent/data'
-    assert_equal "The identifier does not exist", last_response.body
+    follow_redirect!
+    assert_equal "Client does not exist", last_response.body
   end
 
   def test_application_accurately_responds_to_identifier_with_no_payloads
@@ -155,6 +156,7 @@ class ServerTest < Minitest::Test
       rootUrl: "http://jumpstartlab.com"
     })
     get '/sources/jumpstartlab/data'
+    
     assert_equal "No data has been received for this identifier", last_response.body
   end
 

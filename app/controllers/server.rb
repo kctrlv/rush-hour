@@ -56,7 +56,12 @@ module RushHour
       @client = Client.find_by( identifier: params[:identifier] )
       redirect "/sources/#{params[:identifier]}/error" if @client.nil?
 
-      erb :client_stats
+      if @client.payload_requests.length == 0
+        body "No data has been received for this identifier"
+      else
+        body "Show Statistics"
+      end
+      # erb :client_stats
     end
 
     get '/sources/:identifier/error' do
@@ -110,16 +115,5 @@ module RushHour
       erb :url
     end
 
-    get '/sources/:identifier/data' do
-      client = Client.find_by identifier: params[:identifier]
-      if client.nil?
-        body "The identifier does not exist"
-      elsif client.payload_requests.length == 0
-        body "No data has been received for this identifier"
-      else
-        body "Show Statistics"
-      end
-    end
-    
   end
 end

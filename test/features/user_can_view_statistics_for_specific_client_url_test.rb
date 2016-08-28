@@ -5,11 +5,11 @@ class UserCanViewAllClientsTest < FeatureTest
     create_clients
     create_payloads
 
-    visit('/sources/yahoo/urls')
-    click_link("weather")
+    visit('/sources/jumpstartlab/url')
+    click_link("blog")
 
-    assert page.has_content?("buy")
-    assert page.has_content?("cart")
-    assert page.has_content?("shop")
+    assert page.has_content?("Information on http://jumpstartlab.com/blog")
+    assert page.has_content?("Max Response time")
+    assert page.has_content?("57")
   end
 end

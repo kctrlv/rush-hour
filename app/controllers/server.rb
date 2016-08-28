@@ -1,8 +1,15 @@
+require 'pry'
 module RushHour
 
   class Server < Sinatra::Base
     not_found do
+      @clients = Client.all
       erb :error
+    end
+
+    get '/' do
+      @clients = Client.all
+      erb :dashboard
     end
 
     post '/sources' do
@@ -25,7 +32,7 @@ module RushHour
       end
 
       payload = CreatePayloadRequest.create(params)
-      
+
       if  CreatePayloadRequest.record_exists?(payload)
         status 403
         body "Identifier has already been taken"
@@ -38,11 +45,30 @@ module RushHour
       end
     end
 
+    get '/sources/:identifier/data' do
+      @clients = Client.all
+
+      erb :show
+    end
+
     get '/sources/:identifier/error' do
       unless ClientCreator.client_exists?(params)
         status 403
         body "Client does not exist"
+        erb :error
       end
+    end
+
+    get '/sources' do
+      @clients = Client.all
+
+      erb :index
+    end
+
+    get '/sources/new' do
+      @clients = Client.all
+
+      erb :new
     end
   end
 end

@@ -1,0 +1,5 @@
+<ul>
+  <% @clients.each do |client| %>
+    <li><a href="/sources/<%= client.identifier %>/data"><%= client.identifier.capitalize %></a></li>
+  <% end %>
+</ul>

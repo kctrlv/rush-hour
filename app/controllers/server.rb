@@ -26,15 +26,6 @@ module RushHour
       end
     end
 
-    post '/new/form' do
-      client = ClientCreator.create(params)
-      if client.save
-        redirect '/sources'
-      else
-        redirect "/sources/new?error=#{client.errors.full_messages.join(", ")}"
-      end
-    end
-
     post '/sources/:identifier/data' do
       unless ClientCreator.client_exists?(params)
         redirect "/sources/#{params[:identifier]}/error"
@@ -86,20 +77,6 @@ module RushHour
       redirect "/sources/#{params[:identifier]}/error" if @client.nil?
 
       erb :show
-    end
-
-    get '/new/client' do
-      @error = params[:error]
-      erb :new
-    end
-
-    get '/login/client' do
-      @error = params[:error]
-      erb :login
-    end
-
-    post '/login/client' do
-      redirect '/'
     end
 
     get '/sources/:identifier/url/:relativepath' do

@@ -6,7 +6,6 @@ class RequestType < ActiveRecord::Base
 
   def self.most_frequent
     id = joins(:payload_requests).group_by(&:id).max_by{ |k,v| v.count }[0]
-    # id = joins(:payload_requests).group(:request_type_id).count.max_by{ |k,v| v }[0]
     find(id)
   end
 

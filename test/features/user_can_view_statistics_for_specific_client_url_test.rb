@@ -5,11 +5,9 @@ class UserCanViewStatisticsForSpecificUrlTest < FeatureTest
     create_clients
     create_payloads
 
-    visit('/sources/jumpstartlab/url')
-    click_link("blog")
+    visit('/sources/jumpstartlab/url/blog')
 
-    assert page.has_content?("Information on http://jumpstartlab.com/blog")
-    assert page.has_content?("Max Response time")
+    assert page.has_content?("Max. Response Time")
     assert page.has_content?("57")
   end
 end

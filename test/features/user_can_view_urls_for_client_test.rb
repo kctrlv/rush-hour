@@ -8,8 +8,8 @@ class UserCanViewUrlsForClientTest < FeatureTest
     visit('/sources/apple')
     click_link("View Statistics for Specific URLs")
 
-    assert page.has_content?("buy")
-    assert page.has_content?("cart")
-    assert page.has_content?("shop")
+    assert page.has_content?("Buy")
+    assert page.has_content?("Cart")
+    assert page.has_content?("Shop")
   end
 end

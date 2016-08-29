@@ -1,33 +1,48 @@
-<center>
-  <h2>
-    <strong><%= @client.identifier.upcase %></strong> Data
-  </h2>
-</center>
+<%= erb :'shared/_client-menu' %>
+
 <% if @client.payload_requests.count == 0 %>
-  <div class="alert alert-danger" role="alert">
-    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-    <span class="sr-only">Error:</span>
-    No data has been received for <%= @client.identifier.capitalize %>
-  </div>
+  <%= erb :'shared/_no-data-error' %>
 <% else %>
   <center>
-    <h4>Average Response time across all requests</h4>
-    <p><%= @client.average_response_time %></p>
-    <h4>Max Response time across all requests</h4>
-    <p><%= @client.max_response_time %></p>
-    <h4>Min Response time across all requests</h4>
-    <p><%= @client.min_response_time %></p>
-    <h4>Most frequent request type</h4>
-    <p><%= @client.most_frequent_request_type %></p>
-    <h4>List of all HTTP verbs used</h4>
-    <p><%= @client.all_http_verbs_used %></p>
-    <h4>List of URLs listed from most requested to least requested</h4>
-    <p><%= @client.most_to_least_requested_urls %></p>
-    <h4>Web browser breakdown</h4>
-    <p><%= @client.browser_breakdown %></p>
-    <h4>OS breakdown</h4>
-    <p><%= @client.os_breakdown %></p>
-    <h4>Screen Resolutions</h4>
-    <p><%= @client.resolution_breakdown %></p>
+    <div class="panel panel-default">
+      <table class="table">
+        <tr>
+          <th>Avg. Response Time Across All Requests</th>
+          <th><%= @client.average_response_time %></th>
+        </tr>
+        <tr>
+          <th>Max. Response Time Across All Requests</th>
+          <th><%= @client.max_response_time %></th>
+        </tr>
+        <tr>
+          <th>Min. Response Time Across All Requests</th>
+          <th><%= @client.min_response_time %></th>
+        </tr>
+        <tr>
+          <th>Most Frequent Request Type</th>
+          <th><%= @client.most_frequent_request_type %></th>
+        </tr>
+        <tr>
+          <th>List of All HTTP Verbs Used</th>
+          <th><%= @client.all_http_verbs_used.join("<br>") %></th>
+        </tr>
+        <tr>
+          <th>List of URLs (Listed Most Requested to Least Requested)</th>
+          <th><%= @client.most_to_least_requested_urls.join("<br>") %></th>
+        </tr>
+        <tr>
+          <th>Web browser breakdown</th>
+          <th><%= @client.browser_breakdown.keys.join("<br>") %></th>
+        </tr>
+        <tr>
+          <th>OS breakdown</th>
+          <th><%= @client.os_breakdown.keys.join("<br>") %></th>
+        </tr>
+        <tr>
+          <th>Screen Resolutions</th>
+          <th><%= @client.resolution_breakdown.keys.join("<br>") %></th>
+        </tr>
+      </table>
+    </div>
   </center>
 <% end %>

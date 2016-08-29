@@ -1,4 +1,3 @@
-require 'pry'
 require 'tilt/erb'
 
 module RushHour
@@ -84,6 +83,7 @@ module RushHour
       redirect "/sources/#{params[:identifier]}/error" if @client.nil?
       @relativepath = @client.target_urls.find_by( name: "#{@client.root_url}/#{params[:relativepath]}")
       redirect "/sources/#{params[:identifier]}/error" if @relativepath.nil?
+      @relativepaths = @client.target_urls.all.uniq
 
       erb :url_stats
     end

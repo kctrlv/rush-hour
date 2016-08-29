@@ -1,0 +1,11 @@
+<center><h2><strong><%= @client.identifier.upcase %></strong></h2></center>
+<div class="row">
+  <div class="col-md-2">
+    <div class="list-group">
+      <a href="/sources/<%= @client.identifier %>" class="list-group-item"><%= @client.identifier.capitalize %> Homepage</a>
+      <a href="/sources/<%= @client.identifier %>/data" class="list-group-item">View Overall Statistics</a>
+      <a href="/sources/<%= @client.identifier %>/url" class="list-group-item">View Statistics for Specific URLs</a>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="well">

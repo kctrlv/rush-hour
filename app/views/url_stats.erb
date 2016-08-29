@@ -1,25 +1,40 @@
-<center>
-  <h2>
-    <strong><%= @client.identifier.upcase %></strong>
-  </h2>
-</center>
+<%= erb :'shared/_client-menu' %>
 
 <center>
+  <%= erb :'shared/_url-navigation' %>
   <h3>
     Information on <%= @relativepath.name %>
   </h3>
-    <h4>Max Response time</h4>
-      <p><%= TargetUrl.max_response_time(@relativepath.name) %></p>
-    <h4>Min Response time</h4>
-      <p><%= TargetUrl.min_response_time(@relativepath.name) %></p>
-    <h4>Sorted response times</h4>
-      <p><%= TargetUrl.sorted_response_times(@relativepath.name) %></p>
-    <h4>Average Response time for this URL</h4>
-      <p><%= TargetUrl.average_response_time(@relativepath.name) %></p>
-    <h4>HTTP Verb(s) associated used to it this URL</h4>
-      <p><%= TargetUrl.associated_http_verbs(@relativepath.name) %></p>
-    <h4>Three most popular referrers</h4>
-      <p><%= TargetUrl.top_three_referrers(@relativepath.name) %></p>
-    <h4>Three most popular user agents</h4>
-      <p><%= TargetUrl.top_three_user_agents(@relativepath.name) %></p>
+  <div class="panel panel-default">
+    <table class="table">
+      <tr>
+        <th>Max. Response Time</th>
+        <th><%= TargetUrl.max_response_time(@relativepath.name) %></th>
+      </tr>
+      <tr>
+        <th>Min. Response Time</th>
+        <th><%= TargetUrl.min_response_time(@relativepath.name) %></th>
+      </tr>
+      <tr>
+        <th>Sorted Response Times</th>
+        <th><%= TargetUrl.sorted_response_times(@relativepath.name).join("<br>") %></th>
+      </tr>
+      <tr>
+        <th>Average Response Time For <%= @relativepath.name %></th>
+        <th><%= TargetUrl.average_response_time(@relativepath.name) %></th>
+      </tr>
+      <tr>
+        <th>HTTP Verb(s) Associated Used to Get This URL</th>
+        <th><%= TargetUrl.associated_http_verbs(@relativepath.name).join("<br>") %></th>
+      </tr>
+      <tr>
+        <th>Three Most Popular Referrers</th>
+        <th><%= TargetUrl.top_three_referrers(@relativepath.name).join("<br>") %></th>
+      </tr>
+      <tr>
+        <th>Three Most Popular User Agents</th>
+        <th><%= TargetUrl.top_three_user_agents(@relativepath.name).flatten.join("<br>") %></th>
+      </tr>
+    </table>
+  </div>
 </center>

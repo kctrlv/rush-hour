@@ -1,0 +1,6 @@
+<ul class="nav nav-tabs nav-justified" >
+  <% @relativepaths.each do |relativepath| %>
+    <li role="presentation"><a href="/sources/<%= @client.identifier %>/url/<%= relativepath.name.gsub("#{@client.root_url}/", "") %>">
+      <%= relativepath.name.gsub("#{@client.root_url}/", "").capitalize %></a></li>
+  <% end %>
+</ul>
